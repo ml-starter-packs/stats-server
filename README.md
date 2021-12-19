@@ -43,10 +43,14 @@ Then you can pass `--gpus all` to your `make run` command and have access to you
 
 ## Data Persistence
 (WORK IN PROGRESS, PLEASE OPEN ISSUES IF YOU NEED HELP)
+
 `make run` by default runs an emphemeral container for demonstration purposes only.
+
 Before doing any work inside this environment, you need to make sure your user's data will persist.
 Fortunately you can do this by creating a local `home` directory and bind-mounting `./home:/home/` into the container and (optionally) run it without the `--rm` flag.
+
 If you run this container emphemerally (with `--rm`), for users to persist, you will also need to bind-mount the files that define users.
+
 
 ## Integration with Jupyterhub
 (POTENTIAL FUTURE ADD-ON)
