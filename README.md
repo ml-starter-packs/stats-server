@@ -44,14 +44,31 @@ Then you can pass `--gpus all` to your `make run` command and have access to you
 
 
 ## Data Persistence
-(WORK IN PROGRESS, PLEASE OPEN ISSUES IF YOU NEED HELP)
+(PLEASE OPEN ISSUES IF YOU NEED HELP CONFIGURING THIS TO YOUR NEEDS)
 
-`make run` by default runs an emphemeral container for demonstration purposes only.
+Users should save data in their respective home folders.
 
-Before doing any work inside this environment, you need to make sure your user's data will persist.
-Fortunately you can do this by creating a local `home` directory and bind-mounting `./home:/home/` into the container and (optionally) run it without the `--rm` flag.
+`make run` by default runs an emphemeral container *for demonstration purposes only*.
 
-If you run this container emphemerally (with `--rm`), for users to persist, you will also need to bind-mount the files that define users.
+Before doing any real work inside this environment, you need to make sure your user's data will persist.
+
+Fortunately you can do this by creating a local `home` directory and bind-mounting `./home:/home/` and various other directories into the container and run it without the `--rm` flag when deploying the server.
+
+The `makefile` entry for `run` would look like:
+
+```
+run:
+		docker run -d \
+		-v ./home:/home/ \
+		--name stats-server \
+		-p 8787:8787 \
+		-p 3838:3838 \
+		-p 13939:13939 \
+		-p 3939:3939 \
+  stats-server 
+```
+
+Please take time to understand [docker volumes](https://docs.docker.com/storage/volumes/) prior to using this in production.
 
 
 ## Integration with Jupyterhub
