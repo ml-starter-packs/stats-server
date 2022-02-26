@@ -7,6 +7,8 @@ RStudio + RShiny
 
 # Set up
 
+Recommended: edit `add_users.sh` and change the default password, add more users by copy/pasting the example user.
+
 Quickstart:
 ```sh
 make run
@@ -14,13 +16,13 @@ make run
 
 And access RStudio at `http://<your-ip-or-localhost>:8787` (with RShiny running on `3838`).
 
+
 By default you will log in as
 ```sh
 admin
 changethispassword
 ```
 
-(you should change this password in `add_users.sh` before running `make run` and potentially add more users)
 
 ## Terminal
 You may notice the terminal output looks incorrect (unless you are running with GPUs as described below)
